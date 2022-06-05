@@ -24,20 +24,9 @@ def home_page(request):
     return HttpResponse("Рецепты")
     # можете добавить свои рецепты ;)
 
-def omlet(request):
-    context = {'recipe': DATA['omlet']}
+def recipe(request, name):
+    context = {'recipe': DATA[f'{name}']}
     return render(request, 'calculator/index.html', servings(request, context))
-
-
-def pasta(request):
-    context = {'recipe': DATA['pasta']}
-    return render(request, 'calculator/index.html', servings(request, context))
-
-
-def buter(request):
-    context = {'recipe': DATA['buter']}
-    return render(request, 'calculator/index.html', servings(request, context))
-
 
 def servings(request, context):
     servings = int(request.GET.get('servings', 1))
